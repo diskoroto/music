@@ -62,7 +62,7 @@ fetch("albums/" + albumId + ".json")
     
         location.href=album.uri;
     
-    },300);
+    },3000);
 
     // Mostrar botón
 
@@ -74,7 +74,7 @@ fetch("albums/" + albumId + ".json")
     
         button.style.display="inline-block";
     
-    },2000);
+    },5000);
 
     // Redirigir a Spotify Web
 
@@ -88,7 +88,7 @@ fetch("albums/" + albumId + ".json")
     
         }
     
-    },5000);
+    },7000);
 
 })
 
