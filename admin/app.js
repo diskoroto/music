@@ -1,15 +1,82 @@
-const cover=document.getElementById("cover");
+const cover = document.getElementById("cover");
+const preview = document.getElementById("preview");
 
-const preview=document.getElementById("preview");
+const artist = document.getElementById("artist");
+const album = document.getElementById("album");
+const spotify = document.getElementById("spotify");
 
-cover.addEventListener("change",()=>{
+const generate = document.getElementById("generate");
 
-    const file=cover.files[0];
+const filename = document.getElementById("filename");
+const url = document.getElementById("url");
+const json = document.getElementById("json");
 
-    if(!file) return;
+// Vista previa de la imagen
+cover.addEventListener("change", () => {
 
-    preview.src=URL.createObjectURL(file);
+    const file = cover.files[0];
 
-    preview.style.display="block";
+    if (!file) return;
+
+    preview.src = URL.createObjectURL(file);
+
+    preview.style.display = "block";
+
+});
+
+// Convierte texto en un identificador
+function slug(text){
+
+    return text
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g,"")
+        .replace(/[^a-z0-9]+/g,"-")
+        .replace(/^-|-$/g,"");
+
+}
+
+generate.addEventListener("click",()=>{
+
+    if(
+        !artist.value ||
+        !album.value ||
+        !spotify.value ||
+        !cover.files.length
+    ){
+
+        alert("Completa todos los campos.");
+
+        return;
+
+    }
+
+    const id = slug(artist.value) + "-" + slug(album.value);
+
+    const spotifyId = spotify.value
+        .split("/album/")[1]
+        .split("?")[0];
+
+    const albumData = {
+
+        title: album.value,
+
+        artist: artist.value,
+
+        cover: "covers/" + cover.files[0].name,
+
+        spotify: spotify.value,
+
+        uri: "spotify:album:" + spotifyId
+
+    };
+
+    filename.textContent = id + ".json";
+
+    url.textContent =
+        "https://tillithh.github.io/music/?album=" + id;
+
+    json.textContent =
+        JSON.stringify(albumData, null, 4);
 
 });
