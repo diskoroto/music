@@ -35,8 +35,12 @@ fetch("albums/" + albumId + ".json")
     document.getElementById("artist").textContent=album.artist;
 
     document.getElementById("cover").src=album.cover;
+    document.getElementById("background").style.backgroundImage =
+`url(${album.cover})`;
 
     const status=document.getElementById("status");
+    
+    const bar=document.getElementById("bar");
 
     const button=document.getElementById("open");
 
@@ -53,31 +57,37 @@ fetch("albums/" + albumId + ".json")
     // Intentar abrir Spotify
 
     setTimeout(()=>{
-
+    
+        bar.style.width="30%";
+    
         location.href=album.uri;
-
+    
     },300);
 
     // Mostrar botón
 
     setTimeout(()=>{
-
+    
+        bar.style.width="70%";
+    
         status.textContent="Si Spotify no se abrió automáticamente, pulsa el botón.";
-
+    
         button.style.display="inline-block";
-
+    
     },2000);
 
     // Redirigir a Spotify Web
 
     setTimeout(()=>{
-
+    
         if(!userClicked){
-
+    
+            bar.style.width="100%";
+    
             location.href=album.spotify;
-
+    
         }
-
+    
     },5000);
 
 })
