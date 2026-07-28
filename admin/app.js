@@ -1,61 +1,15 @@
-function slug(text){
+const cover=document.getElementById("cover");
 
-    return text
+const preview=document.getElementById("preview");
 
-        .toLowerCase()
+cover.addEventListener("change",()=>{
 
-        .normalize("NFD")
+    const file=cover.files[0];
 
-        .replace(/[\u0300-\u036f]/g,"")
+    if(!file) return;
 
-        .replace(/[^a-z0-9]+/g,"-")
+    preview.src=URL.createObjectURL(file);
 
-        .replace(/^-|-$/g,"");
+    preview.style.display="block";
 
-}
-
-document.getElementById("generate").onclick=()=>{
-
-    const artist=document.getElementById("artist").value;
-
-    const album=document.getElementById("album").value;
-
-    const spotify=document.getElementById("spotify").value;
-
-    const image=document.getElementById("image").value;
-
-    const id=
-
-        slug(artist)+"-"+slug(album);
-
-    const spotifyId=
-
-        spotify.split("/album/")[1].split("?")[0];
-
-    const json={
-
-        title:album,
-
-        artist:artist,
-
-        cover:"covers/"+image,
-
-        spotify:spotify,
-
-        uri:"spotify:album:"+spotifyId
-
-    };
-
-    document.getElementById("filename").textContent=
-
-        id+".json";
-
-    document.getElementById("json").textContent=
-
-        JSON.stringify(json,null,4);
-
-    document.getElementById("url").textContent=
-
-        "https://tillithh.github.io/music/?album="+id;
-
-}
+});
