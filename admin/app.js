@@ -80,3 +80,35 @@ generate.addEventListener("click",()=>{
         JSON.stringify(albumData, null, 4);
 
 });
+
+// Copiar JSON
+document.getElementById("copyJson").addEventListener("click", async () => {
+
+    const text = document.getElementById("json").textContent;
+
+    if (!text) {
+        alert("Primero genera un álbum.");
+        return;
+    }
+
+    await navigator.clipboard.writeText(text);
+
+    alert("JSON copiado.");
+
+});
+
+// Copiar URL
+document.getElementById("copyUrl").addEventListener("click", async () => {
+
+    const text = document.getElementById("url").textContent;
+
+    if (!text) {
+        alert("Primero genera un álbum.");
+        return;
+    }
+
+    await navigator.clipboard.writeText(text);
+
+    alert("URL copiada.");
+
+});
