@@ -74,7 +74,7 @@ generate.addEventListener("click",()=>{
     filename.textContent = id + ".json";
 
     url.textContent =
-        "https://diskoroto.github.io/music/?album" + id;
+        "https://diskoroto.github.io/music/?album=" + id;
 
     json.textContent =
         JSON.stringify(albumData, null, 4);
