@@ -5,10 +5,9 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Administrador</title>
+<title>Administrador Music NFC</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -16,25 +15,27 @@ content="width=device-width, initial-scale=1">
 
 <body>
 
-<div class="card">
+<div class="container">
 
-<h1>Nuevo álbum</h1>
+<h1>🎵 Music NFC Admin</h1>
 
 <label>Artista</label>
 
-<input id="artist">
+<input id="artist" type="text">
 
 <label>Álbum</label>
 
-<input id="album">
+<input id="album" type="text">
 
-<label>Spotify</label>
+<label>Enlace de Spotify</label>
 
-<input id="spotify">
+<input id="spotify" type="text">
 
-<label>Nombre de la imagen</label>
+<label>Portada</label>
 
-<input id="image" placeholder="txt-sanctuary.jpg">
+<input id="cover" type="file" accept="image/*">
+
+<img id="preview">
 
 <button id="generate">
 
@@ -42,17 +43,35 @@ Generar
 
 </button>
 
-<h2>Nombre del archivo</h2>
+<hr>
+
+<h3>Nombre del archivo</h3>
 
 <pre id="filename"></pre>
 
-<h2>JSON</h2>
+<h3>URL del NFC</h3>
+
+<pre id="url"></pre>
+
+<h3>JSON</h3>
 
 <pre id="json"></pre>
 
-<h2>URL NFC</h2>
+<div class="buttons">
 
-<pre id="url"></pre>
+<button id="copyJson">
+
+Copiar JSON
+
+</button>
+
+<button id="copyUrl">
+
+Copiar URL
+
+</button>
+
+</div>
 
 </div>
 
